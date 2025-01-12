@@ -17,7 +17,7 @@ const determineOutcome = (currentCard: ICard, nextCard: ICard): RESULT => {
   throw new Error("Invalid card values");
 };
 
-export const IsPlayerCorrect = (
+export const isPlayerCorrect = (
   currentCard: ICard,
   nextCard: ICard,
   prediction: PREDICTION

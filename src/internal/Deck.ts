@@ -97,10 +97,10 @@ export class Deck implements IDeck {
 }
 
 export const GenerateNewDeck = (): IDeck => {
-  let deckCards: Card[] = [];
-  for (let suit of Object.values(SUITS)) {
-    for (let pip of PIPS) {
-      let value = PIP_TO_VALUE_MAP[pip as keyof typeof PIP_TO_VALUE_MAP];
+  const deckCards: Card[] = [];
+  for (const suit of Object.values(SUITS)) {
+    for (const pip of PIPS) {
+      const value = PIP_TO_VALUE_MAP[pip as keyof typeof PIP_TO_VALUE_MAP];
       deckCards.push(new Card(suit, pip, value));
     }
   }

@@ -3,7 +3,7 @@ import { Button, Container, Flex, Text } from "@chakra-ui/react";
 import GameCard from "./components/GameCard";
 import { useEffect, useState } from "react";
 import { GenerateNewDeck, ICard, IDeck } from "./internal/Deck";
-import { IsPlayerCorrect } from "./internal/Logic";
+import { isPlayerCorrect } from "./internal/Logic";
 import { PREDICTION } from "./internal/enum";
 import GameSummary from "./components/GameSummary";
 
@@ -18,10 +18,10 @@ function App() {
   }, []);
 
   const drawCard = (prediction: PREDICTION) => {
-    let nextCard = deck?.drawCard();
+    const nextCard = deck?.drawCard();
 
     if (currentCard && nextCard) {
-      const playerIsCorrect = IsPlayerCorrect(
+      const playerIsCorrect = isPlayerCorrect(
         currentCard,
         nextCard,
         prediction
@@ -38,7 +38,7 @@ function App() {
   };
 
   const startNewGame = () => {
-    let freshDeck = GenerateNewDeck();
+    const freshDeck = GenerateNewDeck();
     freshDeck.shuffle();
 
     setDeck(freshDeck);
@@ -48,7 +48,7 @@ function App() {
   };
 
   const processScore = (score: number) => {
-    let previousHighScore = localStorage.getItem("hs");
+    const previousHighScore = localStorage.getItem("hs");
 
     if (previousHighScore === null) {
       localStorage.setItem("hs", score.toString());
